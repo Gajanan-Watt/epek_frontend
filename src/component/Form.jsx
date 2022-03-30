@@ -6,12 +6,18 @@ import "./form.css";
 
 export const Form = () => {
   const [text, setText] = useState({});
-
+  const [check, setCheck] = useState(false);
+  const [del, setDel] = useState(false);
+  const [pat, setPat] = useState(false);
   const [info, setInfo] = useState([]);
 
   useEffect(() => {
     getData();
-  }, [info]);
+  }, [check, del]);
+
+  useEffect(() => {
+    getData();
+  }, [pat]);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -24,7 +30,6 @@ export const Form = () => {
       .get("http://localhost:3456/api/issue/")
       .then((res) => setInfo(res.data))
       .catch((e) => console.log(e));
-    console.log("info", info);
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +38,7 @@ export const Form = () => {
       .post("http://localhost:3456/api/issue/", text)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
-    getData();
+    setCheck((prev) => !prev);
   };
   return (
     <>
@@ -80,7 +85,7 @@ export const Form = () => {
       </Box>
 
       <br />
-      <Table info={info} setInfo={setInfo} />
+      <Table setPat={setPat} setDel={setDel} info={info} setInfo={setInfo} />
     </>
   );
 };

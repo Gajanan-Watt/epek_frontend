@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { Model } from "./Model";
 
-export const Table = ({ info, setInfo }) => {
+export const Table = ({ setPat, setDel, info, setInfo }) => {
   const [flag, setFlag] = useState(false);
   const [index, setIndex] = useState([]);
 
@@ -19,6 +19,7 @@ export const Table = ({ info, setInfo }) => {
       .delete(`http://localhost:3456/api/issue/${id}`)
       .then(() => setInfo([...info]))
       .catch((e) => console.log(e));
+    setDel((prev) => !prev);
   };
 
   return (
@@ -55,7 +56,9 @@ export const Table = ({ info, setInfo }) => {
           })}
         </tbody>
       </table>
-      {flag && <Model flag={flag} setFlag={setFlag} id={index} />}
+      {flag && (
+        <Model setPat={setPat} flag={flag} setFlag={setFlag} id={index} />
+      )}
     </>
   );
 };

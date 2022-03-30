@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import "./model.css";
 
-export const Model = ({ flag, setFlag, id }) => {
+export const Model = ({ setPat, flag, setFlag, id }) => {
   const [text, setText] = useState({});
   const [t, setT] = useState(false);
 
@@ -16,12 +16,13 @@ export const Model = ({ flag, setFlag, id }) => {
       .patch(`http://localhost:3456/api/issue/${id}`, text)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
-    setT(true);
+    // setT(true);
+    setPat((prev) => !prev);
   };
 
-  if (t) {
-    window.location.href = "/";
-  }
+  // if (t) {
+  //   window.location.href = "/";
+  // }
 
   const handleChange = (e) => {
     let { name, value } = e.target;
