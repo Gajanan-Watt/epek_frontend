@@ -13,7 +13,7 @@ export const Model = ({ setPat, flag, setFlag, id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:3456/api/issue/${id}`, text)
+      .patch(`https://epek-backend.herokuapp.com/${id}`, text)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
     // setT(true);
