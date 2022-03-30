@@ -21,7 +21,7 @@ export const Form = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:3456/api/issue/")
+      .get("https://epek-backend.herokuapp.com/api/issue/")
       .then((res) => setInfo(res.data))
       .catch((e) => console.log(e));
     console.log("info", info);
@@ -30,7 +30,7 @@ export const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3456/api/issue/", text)
+      .post("https://epek-backend.herokuapp.com/api/issue/", text)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
     getData();

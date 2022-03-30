@@ -16,7 +16,7 @@ export const Table = ({ info, setInfo }) => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3456/api/issue/${id}`)
+      .delete(`https://epek-backend.herokuapp.com/api/issue/${id}`)
       .then(() => setInfo([...info]))
       .catch((e) => console.log(e));
   };
