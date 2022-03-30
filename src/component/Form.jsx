@@ -11,7 +11,7 @@ export const Form = () => {
 
   useEffect(() => {
     getData();
-  }, [info]);
+  }, []);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
